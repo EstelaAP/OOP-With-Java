@@ -1,30 +1,45 @@
 package com.ucreativa.oop.presupuesto;
 
-import java.util.ArrayList;
+import com.ucreativa.oop.presupuesto.entidades.Gasto;
+import com.ucreativa.oop.presupuesto.entidades.RegistroGastos;
+import java.util.Scanner;
 
 public class Main  {
+
     public static void main(String[] args) {
-        System.out.println("Hola Aliiiii!!");
 
-        Gasto gastoLuz = new Gasto();
-        gastoLuz.nombre = "Luz";
-        gastoLuz.moneda = "Colones";
-        gastoLuz.monto = 22000;
+        System.out.println("Sistema Registro de Gastos");
+        Scanner consola = new Scanner(System.in);
 
-        Gasto gastoInternet = new Gasto();
-        gastoInternet.nombre = "Internet";
-        gastoInternet.moneda = "Colones";
-        gastoInternet.monto = 30000;
-
+        boolean siga = true;
         RegistroGastos registro = new RegistroGastos();
-        registro.gastos = new ArrayList<>();
-        registro.gastos .add(gastoLuz);
-        registro.gastos .add(gastoInternet);
+        while (siga){
 
-        for (int i = 0; i < registro.gastos.size(); i++) {
-            System.out.println(registro.gastos.get(i).nombre);
+        System.out.println("Digite el nombre de su gasto");
+        String nombre = consola.nextLine();
 
+        System.out.println("Digite la moneda");
+        String moneda = consola.nextLine();
+
+        System.out.println("Digite el nombre la categoria");
+        String categoria = consola.nextLine();
+
+        System.out.println("Digite el monto");
+        String montoStr = consola.nextLine();
+        int monto = Integer.parseInt(montoStr);
+
+        Gasto nuevoGasto = new Gasto(nombre, moneda, categoria, monto);
+
+
+        registro.addGastos(nuevoGasto);
+
+        for (Gasto gastico : registro.getGastos()) {
+            System.out.println(gastico.getNombre());
         }
 
+        System.out.println("Quiere seguir?(S)");
+            siga = consola.nextLine().equals("S");
+
     }
+}
 }
