@@ -28,4 +28,19 @@ public class ImplementacionSuperDummy implements InterfaceRegistro {
 
     }
 
+    @Override
+    public void addIngreso(String text, String text1, String text2, String text3) {
+
+    }
+
+    @Override
+    public void addGasto() {
+
+    }
+
+    @Override
+    public void addGasto(String text, String text1, String text2) {
+
+    }
+
 }

@@ -10,9 +10,13 @@ public class Ingreso extends Movimiento{
     }
 
     @Override
-    public String getNombre(){
+    public String getDetails() {
+        return "INGRESO: " + this.getNombre() + " - " +
+                this.getMoneda() + " - " +
+                this.getCategoria() + " - " +
+                this.getMonto() + " - " +
+                this.periodicidad;
 
-        return super.getNombre()+ "" + this.periodicidad;
     }
 
 }
