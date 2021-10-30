@@ -3,6 +3,7 @@ package com.ucreativa.oop.presupuesto.ui;
 import com.ucreativa.oop.presupuesto.logicaNegocio.ImplementacionRegistro;
 import com.ucreativa.oop.presupuesto.logicaNegocio.InterfaceRegistro;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,8 @@ public class FrontEnd extends JFrame {
     }
 
     public void build(){
+        InterfaceRegistro registro = new ImplementacionRegistro();
+
         JLabel lblNombre = new JLabel("Nombre");
         JTextField txtNombre = new JTextField();
 
@@ -46,16 +49,22 @@ public class FrontEnd extends JFrame {
 
         JButton salvar = new JButton("Salvar");
         JButton reporte = new JButton("Reporte");
-        InterfaceRegistro registro = new ImplementacionRegistro();
+
+        JLabel lblwarnings = new JLabel("");
+
+
+
         salvar.addActionListener(new AbstractAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 if (ckIsIngreso.isSelected()){
+                    lblwarnings.setText("Salvando Ingreso");
                     registro.addIngreso(txtNombre.getText(), txtMoneda.getText(),
                             txtCategoria.getText(), txtPeriodicidad.getText());
                 }else {
+                    lblwarnings.setText("Salvando Gasto");
                     registro.addGasto(txtNombre.getText(), txtMoneda.getText(),
                             txtCategoria.getText());
                 }
@@ -84,5 +93,6 @@ public class FrontEnd extends JFrame {
         super.add(ckIsIngreso);
         super.add(salvar);
         super.add(reporte);
+        super.add(lblwarnings);
     }
 }

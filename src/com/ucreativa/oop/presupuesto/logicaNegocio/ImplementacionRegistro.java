@@ -33,7 +33,7 @@ public class ImplementacionRegistro implements InterfaceRegistro, InterfaceRepor
     }
 
     @Override
-    public void addGasto(String nombre, String moneda, String categoria, String montoStr) {
+    public boolean addGasto(String nombre, String moneda, String categoria, String montoStr) {
         int monto = Integer.parseInt(montoStr);
         this.movimientos.add(new Gasto(nombre, moneda,
                 categoria, monto));
